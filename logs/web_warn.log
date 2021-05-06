@@ -1,0 +1,3 @@
+2021-04-25 20:45:23.991 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[cn.sqh]' package. Please check your configuration.
+2021-04-25 20:45:38.793 [http-nio-80-exec-2] WARN  com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-04-25 20:46:06.949 [http-nio-80-exec-8] WARN  cn.sqh.web.aop.LimitRequestAop - ip[0:0:0:0:0:0:0:1]于[Sun Apr 25 20:46:06 SGT 2021]访问[/user/getSelfBasicPersonalInfo.do]达到限制次数[5]!

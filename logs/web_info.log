@@ -1,0 +1,28 @@
+2021-04-25 20:45:22.673 [main] INFO  cn.sqh.Application - Starting Application using Java 1.8.0_282 on DESKTOP-CFCLJ1H with PID 1460 (F:\gitRepos\xier_jianli_springboot\sys_web\target\classes started by 10204 in F:\gitRepos\xier_jianli_springboot)
+2021-04-25 20:45:22.703 [main] INFO  cn.sqh.Application - No active profile set, falling back to default profiles: default
+2021-04-25 20:45:23.823 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-25 20:45:23.825 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-25 20:45:23.862 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+2021-04-25 20:45:24.402 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@49cf9028' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-25 20:45:24.412 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-25 20:45:24.747 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 80 (http)
+2021-04-25 20:45:24.757 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-80"]
+2021-04-25 20:45:24.757 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-04-25 20:45:24.757 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-25 20:45:24.887 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-04-25 20:45:24.887 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2081 ms
+2021-04-25 20:45:25.752 [main] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e86807a, org.springframework.security.web.context.SecurityContextPersistenceFilter@47e51549, org.springframework.security.web.header.HeaderWriterFilter@751ae8a4, org.springframework.web.filter.CorsFilter@4548d254, org.springframework.security.web.csrf.CsrfFilter@777d191f, cn.sqh.web.filter.XssFilter@590f0c50, org.springframework.security.web.authentication.logout.LogoutFilter@6d2a2560, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6bcc3f27, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1220ef43, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6bc24e72, org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter@655f69da, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@208f0007, org.springframework.security.web.session.SessionManagementFilter@4232b34a, org.springframework.security.web.access.ExceptionTranslationFilter@3468ee6e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e4e8fdf]
+2021-04-25 20:45:25.908 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-25 20:45:26.158 [main] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2021-04-25 20:45:26.158 [main] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2021-04-25 20:45:26.159 [main] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2021-04-25 20:45:26.160 [main] INFO  t.mybatis.mapper.autoconfigure.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+2021-04-25 20:45:26.746 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-80"]
+2021-04-25 20:45:26.769 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 80 (http) with context path ''
+2021-04-25 20:45:26.780 [main] INFO  cn.sqh.Application - Started Application in 5.009 seconds (JVM running for 7.505)
+2021-04-25 20:45:38.623 [http-nio-80-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-25 20:45:38.623 [http-nio-80-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-04-25 20:45:38.624 [http-nio-80-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-04-25 20:45:38.790 [http-nio-80-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-04-25 20:45:38.962 [http-nio-80-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-04-25 20:45:39.314 [http-nio-80-exec-2] INFO  c.s.w.a.AuthenticationSuccessHandlerImpl - 用户[tom]于[Sun Apr 25 20:45:39 SGT 2021]登录成功!

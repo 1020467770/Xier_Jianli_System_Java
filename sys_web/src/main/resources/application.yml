@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jianli?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jackson:
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+#      location: F://testTmpFiles
+#      location: F://testTmpFiles
+      location: /usr/testTmpFiles
+
+server:
+  port: 8080
+  server:
+    servlet:
+      context-path: jianli
+  servlet:
+    session:
+      cookie:
+        domain: localhost
+        path: /
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    cn.sqh: debug
+    org.springframework: info
+  file:
+    name: /usr/mylogs.txt
+mybatis:
+  type-aliases-package: cn.sqh.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+#线程池
+async:
+  executor:
+    thread:
+      core_pool_size : 10
+      max_pool_size: 50
+      queue_capacity: 1000
+      keep_alive_seconds: 300
+
+file:
+#  upload-dir: F://testFiles
+  upload-dir: /usr/uploadFiles
+#  upload-dir: F://testFiles
+
+#async.executor.thread.max_pool_size : 50
+#async.executor.thread.queue_capacity : 1000
+#async.executor.thread.keep_alive_seconds : 300
+
