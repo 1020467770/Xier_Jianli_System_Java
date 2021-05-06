@@ -11,6 +11,8 @@ public class Result {
     public static final String RESULTTYPE_FAILED = "fail";
     //拒绝访问
     public static final String RESULTTYPE_DINIED = "diny";
+    //出现异常
+    public static final String RESULTTYPE_EXCEPTION = "exception";
 
     private String status;
     private Object data;
