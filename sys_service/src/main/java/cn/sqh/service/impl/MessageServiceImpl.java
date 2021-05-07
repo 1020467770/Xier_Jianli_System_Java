@@ -46,7 +46,7 @@ public class MessageServiceImpl implements IMessageService {
         if (user == null) {
             throw new Exception("未找到该用户信息");
         }
-        messageDao.deleteMessageFromMessageContainer(user.getId(), messageId);
+        messageDao.deleteMessageFromMessageContainer(messageId, user.getId());
     }
 
     @Override
