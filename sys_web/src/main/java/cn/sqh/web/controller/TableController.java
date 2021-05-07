@@ -5,6 +5,7 @@ import cn.sqh.domain.SubmitTable;
 import cn.sqh.domain.Table;
 import cn.sqh.domain.TableField;
 import cn.sqh.domain.result.UploadFileResult;
+import cn.sqh.service.IMessageService;
 import cn.sqh.service.IStorageService;
 import cn.sqh.service.ITableService;
 import cn.sqh.service.ITablesFieldService;
@@ -47,6 +48,9 @@ public class TableController {
     @Autowired
     private IStorageService storageService;
 
+    @Autowired
+    private IMessageService messageService;
+
     @RequestMapping(value = "/addTableFieldsToTable.do", method = RequestMethod.POST)
     @RolesAllowed("GADMIN")
     public Result addTableFieldsToTable(@RequestParam(name = "tableId", required = true) Integer tableId,
@@ -83,7 +87,7 @@ public class TableController {
     @RequestMapping(value = "/submitTable.do", method = RequestMethod.POST)
     @PermitAll
     public Result submitTable(@RequestParam("tableId") Integer tableId,
-                              @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile, HttpServletRequest request) throws Exception {
+                              @RequestParam(value = "uploadFile") MultipartFile uploadFile, HttpServletRequest request) throws Exception {
         Map<String, String[]> parameterMap = request.getParameterMap();
         parameterMap.remove("tableId");
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(uploadFile.getOriginalFilename()));
@@ -96,6 +100,7 @@ public class TableController {
         submitTable.setCheckedStatus(SubmitTable.CHECKEDTYPE_NOTSTART);
         submitTable.setUpdateDate(new Date());
         tableService.saveNewSubmitTable(tableId, submitTable);
+        messageService.notifyNewMessageToGroupByTableId("有一个新的简历投递到你的小组了", tableId, true);
         String fileDownloadUri = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
                 .path("/table/downloadFile.do/")

@@ -1,8 +1,10 @@
 package cn.sqh.service.impl;
 
+import cn.sqh.dao.IMessageDao;
 import cn.sqh.dao.IUserDao;
 import cn.sqh.domain.Role;
 import cn.sqh.domain.UserInfo;
+import cn.sqh.service.IMessageService;
 import cn.sqh.service.IUserService;
 import cn.sqh.utils.BCryptPasswordEncoderUtils;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -25,6 +27,9 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserDao userDao;
+
+    @Autowired
+    private IMessageService messageService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -115,6 +120,7 @@ public class UserServiceImpl implements IUserService {
         final String username = userInfo.getUsername();
         for (Integer groupId : groupIds) {
             userDao.addGroupToUser(userId, username, groupId);
+            messageService.notifyNewMessageToGroup("有一位新的成员加入了你的小组", groupId, false);
         }
     }
 

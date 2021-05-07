@@ -19,7 +19,7 @@ public interface IRoleDao extends Mapper<Role> {
                     many = @Many(select = "cn.sqh.dao.IPermissionDao.findPermissionByRoleId")
             )
     })
-    public Role findRoleByUserId(Integer id) throws Exception;
+    public List<Role> findRoleByUserId(Integer id) throws Exception;
 
     @Insert("insert into role__permission(roleId,permissionId) values(#{roleId},#{permissionId})")
     public void addPermissionToRole(@Param("roleId") Integer roleId, @Param("permissionId") Integer permissionId) throws Exception;
@@ -29,4 +29,7 @@ public interface IRoleDao extends Mapper<Role> {
 
     @Select("select * from role")
     List<Role> findAll() throws Exception;
+
+    @Select("select roleId from users__role where userId=#{userId}")
+    List<Integer> findRoleIdsByUserId(Integer userId) throws Exception;
 }

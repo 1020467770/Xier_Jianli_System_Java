@@ -1,8 +1,10 @@
 package cn.sqh.web.controller;
 
+import cn.sqh.domain.Message;
 import cn.sqh.domain.result.Result;
 import cn.sqh.domain.Role;
 import cn.sqh.domain.UserInfo;
+import cn.sqh.service.IMessageService;
 import cn.sqh.service.IUserService;
 import cn.sqh.utils.MD5;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,6 +30,9 @@ public class UserController {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private IMessageService messageService;
 
     //后端不规定传来的Userinfo需要哪些，但一定要完成用户自己修改个人信息的功能这个接口才算满足需求
     @RequestMapping(value = "/addNewUser_2.do", produces = "application/json;charset=utf-8", method = RequestMethod.POST)
@@ -181,6 +186,26 @@ public class UserController {
         String username = user.getUsername();
         UserInfo userFound = userService.findBasicInfoOfUserByUsername(username);
         userService.updateUserInfo(userFound.getId(), userInfo);
+        return Result.build(Result.RESULTTYPE_SUCCESS, null);
+    }
+
+    @GetMapping(value = "/getSelfMessages.do")
+    @RolesAllowed({"USER"})
+    public Result getSelfMessages() throws Exception {
+        SecurityContext context = SecurityContextHolder.getContext();
+        User user = (User) context.getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        List<Message> messages = messageService.findAllByUsername(username);
+        return Result.build(Result.RESULTTYPE_SUCCESS, messages);
+    }
+
+    @PostMapping(value = "/deleteMessageById.do")
+    @RolesAllowed({"USER"})
+    public Result deleteMessageById(@RequestParam("messageId") Integer messageId) throws Exception {
+        SecurityContext context = SecurityContextHolder.getContext();
+        User user = (User) context.getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        messageService.deleteById(messageId, username);
         return Result.build(Result.RESULTTYPE_SUCCESS, null);
     }
 

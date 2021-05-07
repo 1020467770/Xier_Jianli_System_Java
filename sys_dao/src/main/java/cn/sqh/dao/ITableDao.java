@@ -53,4 +53,7 @@ public interface ITableDao extends Mapper<Table> {
     @Insert("insert into tables(groupId,tableName) values(#{group.id},#{tableName})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     Integer addNewTable(Table table) throws Exception;
+
+    @Select("select groupId from tables where id=#{tableId}")
+    Integer findGroupByTableId(Integer tableId) throws Exception;
 }

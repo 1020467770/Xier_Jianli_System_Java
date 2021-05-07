@@ -16,5 +16,6 @@ public class Message {
     private Integer id;
     private Date sendTime;
     private String content;
+    private UserInfo user;
 
 }

@@ -32,7 +32,7 @@ public interface IUserDao extends Mapper<UserInfo> {
                     many = @Many(select = "cn.sqh.dao.IGroupDao.findGroupByUserId")
             ),
             @Result(property = "messageList", column = "id", javaType = List.class,
-                    many = @Many(select = "cn.sqh.dao.IMessageDao.findMessageByUserId")
+                    many = @Many(select = "cn.sqh.dao.IMessageDao.selectMessagesByUserId")
             )
     })
     public UserInfo findByUsername(String username) throws Exception;
@@ -58,7 +58,7 @@ public interface IUserDao extends Mapper<UserInfo> {
                     many = @Many(select = "cn.sqh.dao.IGroupDao.findGroupByUserId")
             ),
             @Result(property = "messageList", column = "id", javaType = List.class,
-                    many = @Many(select = "cn.sqh.dao.IMessageDao.findMessageByUserId")
+                    many = @Many(select = "cn.sqh.dao.IMessageDao.selectMessagesByUserId")
             )
     })
     public UserInfo findById(Integer id) throws Exception;

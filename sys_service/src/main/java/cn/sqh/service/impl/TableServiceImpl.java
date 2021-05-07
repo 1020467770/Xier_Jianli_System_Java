@@ -48,6 +48,7 @@ public class TableServiceImpl implements ITableService {
     @Override
     public void saveNewSubmitTable(Integer tableId, SubmitTable submitTable) throws Exception {
         submitTableDao.saveNewSubmitTable(tableId, submitTable);
+
     }
 
     @Override
