@@ -11,6 +11,7 @@ import cn.sqh.service.ITableService;
 import cn.sqh.service.ITablesFieldService;
 import cn.sqh.utils.MD5;
 import cn.sqh.web.interfaces.LimitRequest;
+import cn.sqh.web.utils.StringUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-@Controller
 @RequestMapping("/table")
-@ResponseBody
+@RestController
 @Slf4j
 public class TableController {
 
@@ -87,10 +87,14 @@ public class TableController {
     @RequestMapping(value = "/submitTable.do", method = RequestMethod.POST)
     @PermitAll
     public Result submitTable(@RequestParam("tableId") Integer tableId,
-                              @RequestParam(value = "uploadFile") MultipartFile uploadFile, HttpServletRequest request) throws Exception {
+                              @RequestParam(value = "uploadFile") MultipartFile uploadFile,
+                              HttpServletRequest request) throws Exception {
         Map<String, String[]> parameterMap = request.getParameterMap();
         parameterMap.remove("tableId");
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(uploadFile.getOriginalFilename()));
+        if (!StringUtil.isFileTypeCorrect(fileName, "txt","doc","docx")) {
+            return Result.build(Result.RESULTTYPE_DINIED, "文件类型有误");
+        }
         String fileFormatName = MD5.MD5Encode(UUID.randomUUID().toString(), "utf-8") + "@" + fileName;
         storageService.storeFile(uploadFile, fileName, fileFormatName);
         SubmitTable submitTable = new SubmitTable();

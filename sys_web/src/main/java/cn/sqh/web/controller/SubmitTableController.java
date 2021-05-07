@@ -4,16 +4,12 @@ import cn.sqh.domain.result.Result;
 import cn.sqh.service.ISubmitTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 
-@Controller
 @RequestMapping("/submitTable")
-@ResponseBody
+@RestController
 public class SubmitTableController {
 
     @Autowired

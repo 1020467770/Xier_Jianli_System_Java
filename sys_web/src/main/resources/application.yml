@@ -13,8 +13,8 @@ spring:
       max-file-size: 200MB
       max-request-size: 215MB
 #      location: F://testTmpFiles
-      location: F://testTmpFiles
-#      location: /usr/testTmpFiles
+#      location: F://testTmpFiles
+      location: /usr/testTmpFiles
 
   mail:
     # 设置邮箱主机
@@ -65,9 +65,13 @@ async:
       keep_alive_seconds: 300
 
 file:
+  file:
+    security:
+      suffix: txt, doc, docx
 #  upload-dir: F://testFiles
-#  upload-dir: /usr/uploadFiles
-  upload-dir: F://testFiles
+  upload-dir: /usr/uploadFiles
+#  upload-dir: F://testFiles
+
 
 #async.executor.thread.max_pool_size : 50
 #async.executor.thread.queue_capacity : 1000

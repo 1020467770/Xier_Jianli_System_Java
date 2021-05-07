@@ -19,10 +19,9 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.UUID;
 
-@Controller
 @RequestMapping("/user")
-@ResponseBody
 @CrossOrigin
+@RestController
 public class UserController {
 
     @Autowired

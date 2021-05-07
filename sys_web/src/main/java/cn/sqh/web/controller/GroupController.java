@@ -16,9 +16,8 @@ import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@Controller
 @RequestMapping("/group")
-@ResponseBody
+@RestController
 public class GroupController {
 
     @Autowired
