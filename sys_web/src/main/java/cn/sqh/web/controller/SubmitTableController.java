@@ -31,7 +31,7 @@ public class SubmitTableController {
     @RolesAllowed({"GADMIN"})
     @ResponseBody
     public Result checkSubmitTable(@RequestParam("submitTableId") Integer submitTableId,
-                                   @RequestParam(value = "checkerId", required = false) Integer checkerId,
+                                   @RequestParam(value = "checkerId") Integer checkerId,
                                    @RequestParam("checkResultStatus") Integer checkResultStatus) throws Exception {
         submitTableService.checkSubmitTable(submitTableId, checkerId, checkResultStatus);
         return Result.build(Result.RESULTTYPE_SUCCESS, null);

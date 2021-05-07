@@ -16,8 +16,24 @@ spring:
 #      location: F://testTmpFiles
       location: /usr/testTmpFiles
 
+  mail:
+    # 设置邮箱主机
+    host: smtp.qq.com
+    # 设置用户名
+    username: en****sqh@qq.com
+    # 设置密码，该处的密码是QQ邮箱开启SMTP的授权码而非QQ密码
+    password: zn****df
+    port: 587
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        debug: true
+
 server:
-  port: 8080
+  port: 80
   server:
     servlet:
       context-path: jianli
@@ -56,4 +72,7 @@ file:
 #async.executor.thread.max_pool_size : 50
 #async.executor.thread.queue_capacity : 1000
 #async.executor.thread.keep_alive_seconds : 300
+
+
+
 

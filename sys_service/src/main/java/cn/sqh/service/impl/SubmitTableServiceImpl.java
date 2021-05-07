@@ -3,10 +3,11 @@ package cn.sqh.service.impl;
 import cn.sqh.dao.ISubmitTableDao;
 import cn.sqh.domain.SubmitTable;
 import cn.sqh.service.ISubmitTableService;
-import cn.sqh.utils.MailUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,9 @@ public class SubmitTableServiceImpl implements ISubmitTableService {
     @Qualifier("taskExecutor")
     private Executor asyncExecutor;
 
+    @Autowired
+    private JavaMailSenderImpl mailSender;
+
     @Override
     public void checkSubmitTable(Integer submitTableId, Integer checkerId, Integer checkResultStatus) throws Exception {
         if (checkResultStatus != SubmitTable.CHECKEDTYPE_CHECKED_SUCCESS
@@ -36,14 +40,30 @@ public class SubmitTableServiceImpl implements ISubmitTableService {
         ObjectMapper mapper = new ObjectMapper();
         Map contentMap = mapper.readValue(content, Map.class);
         List<String> o = (List<String>) contentMap.get("邮箱");
+        System.out.println(o);
         if (o != null) {
             String email = o.get(0);
+            System.out.println(email);
             if (email != null) {
                 asyncExecutor.execute(() -> {
                     if (checkResultStatus == SubmitTable.CHECKEDTYPE_CHECKED_SUCCESS) {
-                        MailUtils.sendMail(email, "恭喜您的简历通过审核", "关于您投递的简历的回复");
+                        System.out.println("通过");
+                        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+                        simpleMailMessage.setFrom(mailSender.getUsername());
+                        simpleMailMessage.setTo(email);
+                        simpleMailMessage.setSubject("西二简历审核结果");
+                        simpleMailMessage.setText("恭喜您通过审核！");
+                        mailSender.send(simpleMailMessage);
+//                        MailUtils.sendMail(email, "恭喜您的简历通过审核", "关于您投递的简历的回复");
                     } else if (checkResultStatus == SubmitTable.CHECKEDTYPE_CHECKED_FAILED) {
-                        MailUtils.sendMail(email, "很可惜，您的简历未通过审核", "关于您投递的简历的回复");
+                        System.out.println("未通过");
+                        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+                        simpleMailMessage.setFrom(mailSender.getUsername());
+                        simpleMailMessage.setTo(email);
+                        simpleMailMessage.setSubject("西二简历审核结果");
+                        simpleMailMessage.setText("很可惜，您未通过审核。");
+                        mailSender.send(simpleMailMessage);
+//                        MailUtils.sendMail(email, "很可惜，您的简历未通过审核", "关于您投递的简历的回复");
                     }
                 });
 
