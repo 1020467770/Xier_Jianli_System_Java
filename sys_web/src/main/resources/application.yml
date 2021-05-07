@@ -13,16 +13,16 @@ spring:
       max-file-size: 200MB
       max-request-size: 215MB
 #      location: F://testTmpFiles
-#      location: F://testTmpFiles
-      location: /usr/testTmpFiles
+      location: F://testTmpFiles
+#      location: /usr/testTmpFiles
 
   mail:
     # 设置邮箱主机
     host: smtp.qq.com
     # 设置用户名
-    username: en****sqh@qq.com
+    username: encountersqh@qq.com
     # 设置密码，该处的密码是QQ邮箱开启SMTP的授权码而非QQ密码
-    password: zn****df
+    password: znylykfxsghabcdf
     port: 587
     default-encoding: UTF-8
     properties:
@@ -66,8 +66,8 @@ async:
 
 file:
 #  upload-dir: F://testFiles
-  upload-dir: /usr/uploadFiles
-#  upload-dir: F://testFiles
+#  upload-dir: /usr/uploadFiles
+  upload-dir: F://testFiles
 
 #async.executor.thread.max_pool_size : 50
 #async.executor.thread.queue_capacity : 1000
