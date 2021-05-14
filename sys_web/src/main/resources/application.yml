@@ -20,9 +20,9 @@ spring:
     # 设置邮箱主机
     host: smtp.qq.com
     # 设置用户名
-    username: encountersqh@qq.com
+    username: enc****rh@qq.com
     # 设置密码，该处的密码是QQ邮箱开启SMTP的授权码而非QQ密码
-    password: znylykfxsghabcdf
+    password: zny****habcdf
     port: 587
     default-encoding: UTF-8
     properties:
@@ -33,7 +33,7 @@ spring:
         debug: true
 
 server:
-  port: 80
+  port: 8080
   server:
     servlet:
       context-path: jianli
@@ -54,6 +54,8 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+pagehelper:
+  helper-dialect=mysql:
 
 #线程池
 async:
@@ -71,6 +73,7 @@ file:
 #  upload-dir: F://testFiles
   upload-dir: /usr/uploadFiles
 #  upload-dir: F://testFiles
+
 
 
 #async.executor.thread.max_pool_size : 50

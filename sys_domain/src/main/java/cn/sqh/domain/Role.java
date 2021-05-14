@@ -11,10 +11,10 @@ import java.util.List;
 @Table(name = "role")
 public class Role {
 
-    public static final Integer ROLE_SADMIN = 0;
-    public static final Integer ROLE_GADMIN = 1;
-    public static final Integer ROLE_USER = 2;
-    public static final Integer ROLE_ANONYMOUS = 3;
+    public static final Integer ROLE_SADMIN = 1;
+    public static final Integer ROLE_GADMIN = 2;
+    public static final Integer ROLE_USER = 3;
+    public static final Integer ROLE_ANONYMOUS = 4;
 
     @Id
     @KeySql(useGeneratedKeys = true)
